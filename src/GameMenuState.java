@@ -55,7 +55,7 @@ public class GameMenuState extends State{
 					e.printStackTrace();
 				}
 				game = handler.getGame();
-				game.setGameState(new GameState(handler, 1));
+				game.setGameState(new GameState(handler, 2));
 				handler.setGame(game);
 				State.setState(handler.getGame().getGameState());
 			}else if((mouseX >= hardButton.x && mouseX <= hardButton.x + hardButton.width) && (mouseY >= hardButton.y && mouseY <= hardButton.y + hardButton.height)) {
@@ -66,7 +66,7 @@ public class GameMenuState extends State{
 					e.printStackTrace();
 				}
 				game = handler.getGame();
-				game.setGameState(new GameState(handler, 1));
+				game.setGameState(new GameState(handler, 3));
 				handler.setGame(game);
 				State.setState(handler.getGame().getGameState());
 			}else if((mouseX >= veryHardButton.x && mouseX <= veryHardButton.x + veryHardButton.width) && (mouseY >= veryHardButton.y && mouseY <= veryHardButton.y + veryHardButton.height)) {
@@ -77,7 +77,7 @@ public class GameMenuState extends State{
 					e.printStackTrace();
 				}
 				game = handler.getGame();
-				game.setGameState(new GameState(handler, 1));
+				game.setGameState(new GameState(handler, 4));
 				handler.setGame(game);
 				State.setState(handler.getGame().getGameState());
 			}else if((mouseX >= backButton.x && mouseX <= backButton.x + backButton.width) && (mouseY >= backButton.y && mouseY <= backButton.y + backButton.height)) {
