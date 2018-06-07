@@ -2,7 +2,6 @@ import java.awt.Graphics;
 
 public class Player extends Creature{
 	
-	int helpActivated = 0;
 	
 	public Player(Handler handler, float x, float y) {
 		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
@@ -36,19 +35,10 @@ public class Player extends Creature{
 		if(handler.getKeyManager().right)
 			xMove = speed;
 		
-		if (handler.getKeyManager().help) {
-			if (helpActivated == 0)
-				helpActivated = 60;
-		}
-			
-		
 	}
 
 	@Override
 	public void render(Graphics g) {
-		if (helpActivated > 0)
-		    helpActivated--;
-		
 		if(xMove > 0) {
 			if(animation.prevRight == false) {
 				Assets.player = Assets.player_right[0];
@@ -80,20 +70,8 @@ public class Player extends Creature{
 				Assets.player = Assets.player_up[1];
 			}
 		}
-		
 		g.drawImage(Assets.player, (int)(x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
 		
-		if (helpActivated > 0) {
-			int dir = handler.getWorld().getMazeGenerator().findDirection((int) y / Tile.TILEHEIGHT, (int)x / Tile.TILEWIDTH);
-			if (dir == 1)
-			    g.drawImage(Assets.arrow_up, (int)(x - handler.getGameCamera().getxOffset() ), (int) (y - handler.getGameCamera().getyOffset() - 64), width, height, null);
-			if (dir == 2)
-			    g.drawImage(Assets.arrow_down, (int)(x - handler.getGameCamera().getxOffset() ), (int) (y - handler.getGameCamera().getyOffset() + 64), width, height, null);
-			if (dir == 3)
-			    g.drawImage(Assets.arrow_left, (int)(x - handler.getGameCamera().getxOffset() - 64), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
-			if (dir == 4)
-			    g.drawImage(Assets.arrow_right, (int)(x - handler.getGameCamera().getxOffset() + 64), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
-		}
 		/*g.setColor(Color.RED);
 		g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset() ), 
 				   (int) (y + bounds.y - handler.getGameCamera().getyOffset()), 

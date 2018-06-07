@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 public class Launcher {
 	public static void main(String args[])  {
@@ -12,3 +13,12 @@ public class Launcher {
 		
 	}
 }
+=======
+
+public class Launcher {
+	public static void main(String args[]) {
+		Game game = new Game("Maze Expert!", 960, 800);
+		game.start();
+	}
+}
+>>>>>>> 14557669d7293f081c910e1211d3776f3530645c
