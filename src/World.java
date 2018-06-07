@@ -3,6 +3,16 @@ import java.awt.Graphics;
 public class World {
 	
 	private int width = 64, height = 64;
+	private MazeGenerator mazeGenerator;
+	
+	public MazeGenerator getMazeGenerator() {
+		return mazeGenerator;
+	}
+
+	public void setMazeGenerator(MazeGenerator mazeGenerator) {
+		this.mazeGenerator = mazeGenerator;
+	}
+
 	public int getSpawnX() {
 		return spawnX;
 	}
@@ -50,7 +60,7 @@ public class World {
 			return Tile.grassTile;
 		
 		
-		Tile t = Tile.tiles[tiles[x][y]]; 
+		Tile t = Tile.tiles[tiles[y][x]]; 
 		if(t == null) {
 			return Tile.dirtTile;
 		}
@@ -58,16 +68,15 @@ public class World {
 	}
 	
 	private void loadWorld(String path) {
-		MazeGenerator gen = new MazeGenerator(20, 20, 1, 5, 60);
-
-		String file = Utils.loadFileAsString(path);
-		String[] tokens = file.split("\\s+");
+		
+		mazeGenerator = new MazeGenerator(20, 20, 1, 5, 30);
+		
 		width = 20;
 		height = 20;
 		spawnX = 45;
 		spawnY = 30;
 		
-		tiles = gen.generateMaze(1,1);;
+		tiles = mazeGenerator.generateMaze(1,1);;
 		
 	}
 	
