@@ -33,9 +33,9 @@ public class World {
 	private int[][] tiles;
 	private Handler handler;
 	
-	public World(Handler handler,String path) {	
+	public World(Handler handler, int difficulty) {	
 		this.handler = handler;
-		loadWorld(path);
+		loadWorld(difficulty);
 	}
 	
 	public void tick() {
@@ -67,16 +67,26 @@ public class World {
 		return t;
 	}
 	
-	private void loadWorld(String path) {
+	private void loadWorld(int difficulty) {
 		
-		mazeGenerator = new MazeGenerator(20, 20, 1, 5, 30);
+		if (difficulty == 0)
+		    mazeGenerator = new MazeGenerator(41, 102, 10, 2, 170, 185);
+		if (difficulty == 1)
+		    mazeGenerator = new MazeGenerator(41, 102, 6, 2, 188, 200);
+		if (difficulty == 2)
+		    mazeGenerator = new MazeGenerator(41, 102, 3, 3, 230, 240);
+		if (difficulty == 3)
+		    mazeGenerator = new MazeGenerator(41, 102, 2, 3, 228, 236);
+		if (difficulty == 4)
+		    mazeGenerator = new MazeGenerator(41, 102, 1, 3, 220, 225);
 		
-		width = 20;
-		height = 20;
+		width = 41;
+		height = 102;
 		spawnX = 45;
 		spawnY = 30;
 		
-		tiles = mazeGenerator.generateMaze(1,1);;
+			tiles = mazeGenerator.generateMaze(1,1);
+	
 		
 	}
 	

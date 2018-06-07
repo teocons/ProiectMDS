@@ -47,16 +47,18 @@ public class MazeGenerator {
 	private int mazeWidth;
 	private int mazeHeight;
 	private int[][] maze;
-	private int minStepsObtained;
+	private int stepsObtained;
 	private int minStepsWanted;
+	private int maxStepsWanted;
 	Random rand;
 	
-	MazeGenerator(int mazewidth, int mazeheight, int blockdim, int modnum, int minstepsw){
+	MazeGenerator(int mazewidth, int mazeheight, int blockdim, int modnum, int minstepsw, int maxstepw){
 		blockDim = blockdim;
 		modNum = modnum;
 		mazeWidth = mazewidth;
 		mazeHeight = mazeheight;
 		minStepsWanted = minstepsw;
+		maxStepsWanted = maxstepw;
 		maze = new int[mazeHeight][mazeWidth];
 		rand = new Random();
 	}
@@ -84,7 +86,7 @@ public class MazeGenerator {
 			
 				num = rand.nextInt() % modNum;
 				
-				if (num > 0){
+				if (num == 0){
 					for(x = i; x < i + blockDim; ++x)
 						for(y = j; y < j + blockDim; ++y){
 							maze[x][y] = 2;
@@ -92,7 +94,12 @@ public class MazeGenerator {
 				}
 			
 			}
-	    } while((minStepsObtained = testMaze(startX, startY)) < minStepsWanted);
+		
+		   stepsObtained = testMaze(startX, startY);
+		 //  if (stepsObtained > 0)
+			 //  {showMaze(); Thread.sleep(1000);}
+		   
+	    } while(stepsObtained == 0);
 	    
 		maze[mazeHeight - 2][mazeWidth - 2] = 3;
 				
@@ -187,12 +194,12 @@ public class MazeGenerator {
 	void showMaze(){
 		for(int i = 0; i < mazeHeight; ++i){
 			for(int j = 0; j < mazeWidth; ++j)
-				System.out.print(maze[i][j] + " ");
+				System.out.print(maze[i][j]);
 		
 	     System.out.print("\n");
 		}
 		
-		System.out.print("\n" + "Minimum Steps :" + minStepsObtained + "\n");
+		System.out.print("\n" + "Minimum Steps :" + stepsObtained + "\n");
 	}
 	
 };

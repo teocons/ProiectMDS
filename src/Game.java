@@ -80,7 +80,7 @@ public class Game implements Runnable {
 		
 		highScore = new HighScore(handler);
 		
-		gameState = new GameState(handler, 1);
+		//gameState = new GameState(handler, 1);
 		menuState = new MenuState(handler);
 		gameMenuState = new GameMenuState(handler);
 		scoresState = new ScoresState(handler);

@@ -33,7 +33,7 @@ public class GameState extends State{
 	GameState(Handler handler, int difficulty) {
 		super(handler);
 		this.difficulty = difficulty;
-		world = new World(handler);
+		world = new World(handler, difficulty);
 		handler.setWorld(world);
 		player = new Player(handler, 65, 65);
 		menuButton = new Rectangle(1, 7, 90, 60);
